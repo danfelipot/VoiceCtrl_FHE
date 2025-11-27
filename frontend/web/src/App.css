@@ -1,0 +1,523 @@
+:root {
+  --primary: #6e48aa;
+  --secondary: #9d50bb;
+  --accent: #4776e6;
+  --text: #f8f9fa;
+  --bg: #121212;
+  --card-bg: #1e1e1e;
+  --error: #ff4d4d;
+  --success: #4caf50;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+  background-color: var(--bg);
+  color: var(--text);
+}
+
+.app-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.app-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 0;
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+  margin-bottom: 30px;
+}
+
+.app-header h1 {
+  font-size: 2rem;
+  background: linear-gradient(45deg, var(--primary), var(--accent));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.app-header p {
+  color: rgba(255,255,255,0.7);
+  font-size: 0.9rem;
+}
+
+.app-nav {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 30px;
+}
+
+.app-nav button {
+  background: none;
+  border: none;
+  color: var(--text);
+  padding: 10px 20px;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.app-nav button.active {
+  background: var(--primary);
+  color: white;
+}
+
+.app-nav button:hover {
+  background: rgba(110, 72, 170, 0.3);
+}
+
+.app-main {
+  min-height: 60vh;
+}
+
+.commands-section, .create-section, .stats-section {
+  animation: fadeIn 0.5s ease;
+}
+
+.search-bar {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.search-bar input {
+  flex: 1;
+  padding: 12px;
+  border-radius: 25px;
+  border: none;
+  background: var(--card-bg);
+  color: var(--text);
+}
+
+.search-bar button {
+  padding: 12px 20px;
+  border-radius: 25px;
+  border: none;
+  background: var(--accent);
+  color: white;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.search-bar button:hover {
+  background: #3a5fc8;
+}
+
+.commands-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 20px;
+}
+
+.command-card {
+  background: var(--card-bg);
+  border-radius: 10px;
+  padding: 20px;
+  cursor: pointer;
+  transition: all 0.3s;
+  border-left: 4px solid var(--primary);
+}
+
+.command-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+}
+
+.command-card.verified {
+  border-left-color: var(--success);
+}
+
+.command-name {
+  font-size: 1.2rem;
+  margin-bottom: 10px;
+  color: var(--primary);
+}
+
+.command-desc {
+  color: rgba(255,255,255,0.7);
+  margin-bottom: 15px;
+  font-size: 0.9rem;
+}
+
+.command-meta {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.8rem;
+  color: rgba(255,255,255,0.5);
+}
+
+.empty-state {
+  text-align: center;
+  padding: 50px;
+  color: rgba(255,255,255,0.5);
+}
+
+.empty-state button {
+  margin-top: 20px;
+  padding: 10px 20px;
+  border-radius: 25px;
+  border: none;
+  background: var(--primary);
+  color: white;
+  cursor: pointer;
+}
+
+.create-form {
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 8px;
+  color: var(--primary);
+}
+
+.form-group input, .form-group textarea {
+  width: 100%;
+  padding: 12px;
+  border-radius: 5px;
+  border: 1px solid rgba(255,255,255,0.1);
+  background: var(--card-bg);
+  color: var(--text);
+}
+
+.form-group textarea {
+  min-height: 100px;
+  resize: vertical;
+}
+
+.create-form button {
+  width: 100%;
+  padding: 15px;
+  border-radius: 25px;
+  border: none;
+  background: var(--primary);
+  color: white;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.create-form button:hover {
+  background: var(--secondary);
+}
+
+.create-form button:disabled {
+  background: rgba(110, 72, 170, 0.5);
+  cursor: not-allowed;
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  margin-bottom: 30px;
+}
+
+.stat-card {
+  background: var(--card-bg);
+  border-radius: 10px;
+  padding: 20px;
+  text-align: center;
+}
+
+.stat-card h3 {
+  color: rgba(255,255,255,0.7);
+  margin-bottom: 10px;
+  font-size: 1rem;
+}
+
+.stat-card p {
+  font-size: 2rem;
+  color: var(--primary);
+}
+
+.fhe-process {
+  background: var(--card-bg);
+  border-radius: 10px;
+  padding: 20px;
+}
+
+.fhe-process h3 {
+  margin-bottom: 20px;
+  color: var(--primary);
+}
+
+.process-steps {
+  display: flex;
+  justify-content: space-between;
+  gap: 15px;
+}
+
+.step {
+  flex: 1;
+  text-align: center;
+}
+
+.step-number {
+  width: 40px;
+  height: 40px;
+  background: var(--primary);
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 10px;
+}
+
+.step p {
+  font-size: 0.9rem;
+  color: rgba(255,255,255,0.7);
+}
+
+.command-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0,0,0,0.8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.modal-content {
+  background: var(--card-bg);
+  border-radius: 10px;
+  padding: 30px;
+  max-width: 500px;
+  width: 100%;
+  position: relative;
+}
+
+.close-modal {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  background: none;
+  border: none;
+  color: var(--text);
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+.command-description {
+  margin-bottom: 20px;
+  color: rgba(255,255,255,0.7);
+}
+
+.command-details {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 15px;
+  margin-bottom: 20px;
+}
+
+.detail span {
+  display: block;
+  color: var(--primary);
+  font-size: 0.8rem;
+}
+
+.command-value {
+  margin-top: 30px;
+  text-align: center;
+}
+
+.command-value h3 {
+  margin-bottom: 15px;
+  color: var(--primary);
+}
+
+.decrypted-value {
+  font-size: 1.5rem;
+  margin-bottom: 20px;
+  color: var(--success);
+}
+
+.encrypted-value {
+  font-size: 1.2rem;
+  margin-bottom: 20px;
+  color: var(--accent);
+}
+
+.command-value button {
+  padding: 10px 20px;
+  border-radius: 25px;
+  border: none;
+  background: var(--primary);
+  color: white;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.command-value button:hover {
+  background: var(--secondary);
+}
+
+.command-value button:disabled {
+  background: rgba(110, 72, 170, 0.5);
+  cursor: not-allowed;
+}
+
+.transaction-notice {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background: var(--card-bg);
+  border-radius: 10px;
+  padding: 15px 20px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+  animation: slideIn 0.3s ease;
+}
+
+.transaction-notice.success {
+  border-left: 4px solid var(--success);
+}
+
+.transaction-notice.error {
+  border-left: 4px solid var(--error);
+}
+
+.transaction-notice.pending {
+  border-left: 4px solid var(--accent);
+}
+
+.notice-content {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.spinner {
+  width: 20px;
+  height: 20px;
+  border: 3px solid rgba(255,255,255,0.3);
+  border-radius: 50%;
+  border-top-color: var(--accent);
+  animation: spin 1s ease infinite;
+}
+
+.check, .cross {
+  font-size: 1.2rem;
+}
+
+.check {
+  color: var(--success);
+}
+
+.cross {
+  color: var(--error);
+}
+
+.connection-prompt {
+  text-align: center;
+  margin-top: 100px;
+}
+
+.voice-ball {
+  width: 100px;
+  height: 100px;
+  background: radial-gradient(circle, var(--primary), var(--secondary));
+  border-radius: 50%;
+  margin: 0 auto 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 2rem;
+  box-shadow: 0 0 20px rgba(110, 72, 170, 0.5);
+}
+
+.connection-prompt h2 {
+  margin-bottom: 10px;
+  color: var(--primary);
+}
+
+.connection-prompt p {
+  color: rgba(255,255,255,0.7);
+  margin-bottom: 30px;
+}
+
+.loading-screen {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+
+.fhe-spinner {
+  width: 50px;
+  height: 50px;
+  border: 5px solid rgba(110, 72, 170, 0.2);
+  border-radius: 50%;
+  border-top-color: var(--primary);
+  animation: spin 1s linear infinite;
+  margin-bottom: 20px;
+}
+
+.voice-wave {
+  width: 80px;
+  height: 60px;
+  display: flex;
+  align-items: flex-end;
+  gap: 5px;
+  margin-bottom: 20px;
+}
+
+.voice-wave::before,
+.voice-wave::after {
+  content: '';
+  display: block;
+  width: 10px;
+  background: var(--primary);
+  animation: wave 1.5s ease infinite;
+}
+
+.voice-wave::before {
+  height: 30px;
+  animation-delay: 0.2s;
+}
+
+.voice-wave::after {
+  height: 50px;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+@keyframes wave {
+  0%, 100% { height: 20px; }
+  50% { height: 60px; }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideIn {
+  from { transform: translateX(100%); }
+  to { transform: translateX(0); }
+}
